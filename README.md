@@ -9,7 +9,17 @@ For more information about the Barnes-Hut algorithm
 https://en.wikipedia.org/wiki/Barnes%E2%80%93Hut_simulation?oldid=469278664
 
 ## Install
-To install this package, we strongly encourage to use a [`virtualenv`](https://virtualenv.pypa.io/en/latest/) or a [`conda env`](https://conda.io/docs/user-guide/tasks/manage-environments.html). Go to the root of this project (that means the folder that contains the `setup.py` file) and then run:
+To install this package, we strongly encourage to use a [`virtualenv`](https://virtualenv.pypa.io/en/latest/) or a [`conda env`](https://conda.io/docs/user-guide/tasks/manage-environments.html). 
+
+For example, you can create your conda envirioments ans install the required modules :
+
+```
+conda create -n galaxy 
+conda activate gala
+conda install numpy scipy matplotlib docopt numba jupyter plotly pyopengl
+```
+
+Go to the root of this project (that means the folder that contains the `setup.py` file) and then run:
 
 `pip install .`
 
