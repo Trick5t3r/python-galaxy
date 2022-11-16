@@ -17,7 +17,7 @@ For example, you can create your conda environment and install the required modu
 ```
 conda create -n galaxy 
 conda activate galaxy
-conda install numpy scipy matplotlib docopt numba jupyter plotly pyopengl
+conda install -c conda-forge numpy scipy matplotlib docopt numba jupyter plotly pyopengl
 ```
 
 ## Examples
