@@ -21,7 +21,8 @@ import numpy as np
 import importlib
 
 from docopt import docopt
-
+import sys
+sys.path.append('../')
 import pygalaxy
 from pygalaxy.barnes_hut_array import compute_energy
 

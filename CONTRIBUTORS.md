@@ -1,3 +1,5 @@
 - [gouarin](https://github.com/gouarin)
 - [rolanddenis](https://github.com/rolanddenis)
 - [khinsen](https://github.com/khinsen)
+- [massot](https://github.com/kivvix)
+- [series](https://github.com/seriesl)

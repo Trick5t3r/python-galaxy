@@ -8,10 +8,11 @@ For more information about the Barnes-Hut algorithm
 
 https://en.wikipedia.org/wiki/Barnes%E2%80%93Hut_simulation?oldid=469278664
 
-## Install
-To install this package, we strongly encourage to use a [`virtualenv`](https://virtualenv.pypa.io/en/latest/) or a [`conda env`](https://conda.io/docs/user-guide/tasks/manage-environments.html). 
+## Installation of dependencies
 
-For example, you can create your conda envirioments ans install the required modules :
+To install dependencies, we strongly encourage to use a [`virtualenv`](https://virtualenv.pypa.io/en/latest/) or a [`conda env`](https://conda.io/docs/user-guide/tasks/manage-environments.html). 
+
+For example, you can create your conda environment and install the required modules :
 
 ```
 conda create -n galaxy 
@@ -19,32 +20,30 @@ conda activate galaxy
 conda install numpy scipy matplotlib docopt numba jupyter plotly pyopengl
 ```
 
-Go to the root of this project (that means the folder that contains the `setup.py` file) and then run:
-
-`pip install .`
-
-**With this standard installation you cannot run the examples with the OpenGL rendering engine. To do that you need to install the `opengl` variant**:
-
-`pip install .[opengl]`
-
 ## Examples
 
 There are two examples in the `examples` directory of each version:
 
-- solar system
+- solar system 
 - two galaxies with 3000 bodies
 
-To try the examples just run the examples doing: 
+To try the examples just run the examples doing : 
 
-`python examples/galaxy.py`
+```
+cd examples
+python galaxy.py
+```
 
 You can print an help test doing:
 
-`python examples/galaxy.py -h`. 
+`python galaxy.py -h`. 
 
-If you compiled the `opengl` version, you can specify the renderer with
+If you have installed `opengl`, you can specify the renderer with
 
-`python examples/galaxy.py -R opengl`
+`python galaxy.py -R opengl`
+
+For solar system, a notebook is also available.
+
 
 # Contributors
 Check the [CONTRIBUTORS.md](CONTRIBUTORS.md) file.
