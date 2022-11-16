@@ -1,7 +1,7 @@
 import numpy as np
 import numba
 from ..forces import force
-from ..physics import gamma_si
+from ..physics import gamma_si, theta
 
 @numba.njit
 def buildTree(center0, box_size0, child, cell_center, cell_radius, particles):
@@ -146,7 +146,7 @@ def computeForce(nbodies, child_array, center_of_mass, mass, cell_radius, p):
                     dx = center_of_mass[child, 0] - pos[0]
                     dy = center_of_mass[child, 1] - pos[1]
                     dist = np.sqrt(dx**2 + dy**2)
-                    if dist != 0 and cell_radius[child - nbodies][0]/dist <.5:
+                    if dist != 0 and cell_radius[child - nbodies][0]/dist < theta:
                         Fx, Fy = force(pos, center_of_mass[child], mass[child])
                         acc[0] += Fx
                         acc[1] += Fy
