@@ -6,12 +6,13 @@ galaxy.
 
 
 Usage:
-    solar [options]
+    galaxy.py [options]
 
 Options:
     -R, --render=<render_option>    The typology of render engine to be used. By
                                     default it uses `matplotlib`. The other
-                                    option is to use the more fancy `opengl`.
+                                    option is to use the more fancy `opengl`, or
+                                    `file` to store output into a file.
                                     [default: matplotlib]
 
     --step=<step>                   Simulation step between each render
