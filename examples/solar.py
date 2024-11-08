@@ -21,11 +21,13 @@ Options:
 
 import importlib
 import numpy as np
+from docopt import docopt
+# autopep8: off
 import sys
 sys.path.append('../')
 import pygalaxy
-from docopt import docopt
 from pygalaxy.barnes_hut_array import compute_energy
+# autopep8: on
 
 
 class SolarSystem:

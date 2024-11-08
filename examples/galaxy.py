@@ -21,11 +21,12 @@ import numpy as np
 import importlib
 
 from docopt import docopt
+# autopep8: off
 import sys
 sys.path.append('../')
 import pygalaxy
 from pygalaxy.barnes_hut_array import compute_energy
-
+# autopep8: on
 
 def temp2color(temps):
     """ Convert black body temperature to corresponding RGBA color.
