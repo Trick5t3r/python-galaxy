@@ -20,9 +20,9 @@ class Animation(object):
         self.simu = simu
 
         self.number_iterations = 50
-        self.data = np.empty(
+        self.history = np.empty(
             shape=(self.number_iterations, *self.simu.particles.shape))
-        self.data[0] = self.simu.particles
+        self.history[0] = self.simu.particles
 
     def _update_coords(self, i):
         """ Update scatter coordinates. """
@@ -37,8 +37,9 @@ class Animation(object):
 
         for i in range(self.number_iterations):
             print(f"{i}/{self.number_iterations}", end="\r")
-            self.data[i] = self._update_coords(i)
+            self.history[i] = self._update_coords(i)
 
         print("save history...")
         # save all history into a file
-        np.save("output.npy", self.data)
+        np.save("particles.npy", self.history)
+        np.save("mass.npy", self.simu.mass)
