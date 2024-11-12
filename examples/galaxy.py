@@ -6,12 +6,13 @@ galaxy.
 
 
 Usage:
-    solar [options]
+    galaxy.py [options]
 
 Options:
     -R, --render=<render_option>    The typology of render engine to be used. By
                                     default it uses `matplotlib`. The other
-                                    option is to use the more fancy `opengl`.
+                                    option is to use the more fancy `opengl`, or
+                                    `file` to store output into a file.
                                     [default: matplotlib]
 
     --step=<step>                   Simulation step between each render
@@ -21,11 +22,12 @@ import numpy as np
 import importlib
 
 from docopt import docopt
+# autopep8: off
 import sys
 sys.path.append('../')
 import pygalaxy
 from pygalaxy.barnes_hut_array import compute_energy
-
+# autopep8: on
 
 def temp2color(temps):
     """ Convert black body temperature to corresponding RGBA color.

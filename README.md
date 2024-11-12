@@ -42,6 +42,12 @@ If you have installed `opengl`, you can specify the renderer with
 
 `python galaxy.py -R opengl`
 
+Or use the `file` renderer (output will be in file with function [`numpy.save`](https://numpy.org/doc/stable/reference/generated/numpy.save.html):
+
+`python galaxy.py -R file`
+
+next read data with [`numpy.load`](https://numpy.org/doc/stable/reference/generated/numpy.load.html#numpy.load) function.
+
 For solar system, a notebook is also available.
 
 
