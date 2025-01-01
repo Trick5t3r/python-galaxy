@@ -47,7 +47,7 @@ class ADB6:
             mass: Masses des particules.
             particles: Tableau des particules ([nb_particules, nb_dimension, x]).
         """
-        particles[:, :, :2] += self.dt * (
+        particles[:, :, :] += self.dt * (
             self.c[0] * self.f[5, :, :, :] +
             self.c[1] * self.f[4, :, :, :] +
             self.c[2] * self.f[3, :, :, :] +
@@ -56,4 +56,4 @@ class ADB6:
             self.c[5] * self.f[0, :, :, :]
         )
         self.f = np.roll(self.f, -1, axis=0)
-        self.method(mass, particles, self.f[5])
+        self.method(mass, particles, self.f[5], dim=self.dim)

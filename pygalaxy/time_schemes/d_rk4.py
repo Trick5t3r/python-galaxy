@@ -39,21 +39,21 @@ class RK4:
             particles: Tableau des particules ([nb_particules, nb_dimension, x]).
         """
         # k1
-        self.method(mass, particles, self.k1)
-        self.tmp[:, :, :] = particles[:, :, :2] + self.dt * 0.5 * self.k1
+        self.method(mass, particles, self.k1, dim=self.dim)
+        self.tmp = particles + self.dt * 0.5 * self.k1
 
         # k2
-        self.method(mass, self.tmp, self.k2)
-        self.tmp[:, :, :] = particles[:, :, :2] + self.dt * 0.5 * self.k2
+        self.method(mass, self.tmp, self.k2, dim=self.dim)
+        self.tmp = particles + self.dt * 0.5 * self.k2
 
         # k3
-        self.method(mass, self.tmp, self.k3)
-        self.tmp[:, :, :] = particles[:, :, :2] + self.dt * self.k3
+        self.method(mass, self.tmp, self.k3, dim=self.dim)
+        self.tmp = particles + self.dt * self.k3
 
         # k4
-        self.method(mass, self.tmp, self.k4)
+        self.method(mass, self.tmp, self.k4, dim=self.dim)
 
         # Mise à jour des particules
-        particles[:, :, :2] += self.dt / 6.0 * (
+        particles += self.dt / 6.0 * (
             self.k1 + 2.0 * (self.k2 + self.k3) + self.k4
         )

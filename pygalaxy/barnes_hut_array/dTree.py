@@ -1,19 +1,18 @@
 import numpy as np
 from ..forces import force
-from . import d_numba_functions
+from .d_numba_functions import buildTree, computeMassDistribution, computeForce
 
 class TreeArray:
     def __init__(self, bmin, bmax, size, dim):
         self.nbodies = size
-        self.dim = dim  # Nombre de dimensions
-        
-        # Calcul des enfants : 2^d enfants par cellule
+        self.dim = dim
+
         self.child = -np.ones((2**dim) * (2*size+1), dtype=np.int32)
         self.bmin = np.asarray(bmin)
         self.bmax = np.asarray(bmax)
         self.center = 0.5 * (self.bmin + self.bmax)
         self.box_size = self.bmax - self.bmin
-        
+
         self.ncell = 0
         self.cell_center = np.zeros((2*size+1, dim))
         self.cell_radius = np.zeros((2*size+1, dim))
@@ -21,7 +20,7 @@ class TreeArray:
         self.cell_radius[0] = self.box_size
 
     def buildTree(self, particles):
-        self.ncell = d_numba_functions.buildTree(
+        self.ncell = buildTree(
             self.center, self.box_size, self.child, self.cell_center, self.cell_radius, particles, self.dim
         )
 
@@ -31,12 +30,12 @@ class TreeArray:
         self.center_of_mass = np.zeros((self.nbodies + self.ncell + 1, self.dim))
         self.center_of_mass[:self.nbodies] = particles[:, :, 0]
 
-        d_numba_functions.computeMassDistribution(
+        computeMassDistribution(
             self.nbodies, self.ncell, self.child, self.mass, self.center_of_mass, self.dim
         )
 
     def computeForce(self, p):
-        return d_numba_functions.computeForce(
+        return computeForce(
             self.nbodies, self.child, self.center_of_mass, self.mass, self.cell_radius, p, self.dim
         )
 
