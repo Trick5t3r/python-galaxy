@@ -1,5 +1,5 @@
 old_version = True
-if old_version == 2:
+if old_version:
     from . import physics
     from .init import init_solar_system, init_collisions
     from .time_schemes.euler import Euler, Euler_symplectic, Euler_symplectic_tree
